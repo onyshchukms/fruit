@@ -26,3 +26,40 @@ define('DB_PASSWORD', 'root');
 define('DB_DATABASE', 'fruit');
 define('DB_PORT', '3306');
 define('DB_PREFIX', 'oc_');
+
+
+// POSITIONS
+define('positions', serialize(array(
+    'home_block_1' => array(
+        'label' => 'Home - Block 1',
+        'template' => 'home_block_1.tpl'
+    ),
+    'home_block_2' => array(
+        'label' => 'Home - Block 2',
+        'template' => 'home_block_2.tpl'
+    ),
+    'home_block_3' => array(
+        'label' => 'Home - Block 3',
+        'template' => 'home_block_3.tpl'
+    ),
+    'home_block_4' => array(
+        'label' => 'Home - Block 4',
+        'template' => 'home_block_4.tpl'
+    ),
+    'home_block_5' => array(
+        'label' => 'Home - Block 5',
+        'template' => 'home_block_5.tpl'
+    ),
+    'home_block_6' => array(
+        'label' => 'Home - Block 6',
+        'template' => 'home_block_6.tpl'
+    ),
+    'home_block_7' => array(
+        'label' => 'Home - Block 7',
+        'template' => 'home_block_7.tpl'
+    ),
+    'home_block_8' => array(
+        'label' => 'Home - Block 8',
+        'template' => 'home_block_8.tpl'
+    ),
+)));
