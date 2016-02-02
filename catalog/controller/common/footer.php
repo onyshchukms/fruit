@@ -20,6 +20,40 @@ class ControllerCommonFooter extends Controller {
 		$data['text_wishlist'] = $this->language->get('text_wishlist');
 		$data['text_newsletter'] = $this->language->get('text_newsletter');
 
+		if ($this->request->server['HTTPS']) {
+			$server = $this->config->get('config_ssl');
+		} else {
+			$server = $this->config->get('config_url');
+		}
+
+		$data['name'] = $this->config->get('config_name');
+		$data['telephone'] = $this->config->get('config_telephone');
+
+		if (is_file(DIR_IMAGE . $this->config->get('config_logo'))) {
+			$data['logo'] = $server . 'image/' . $this->config->get('config_logo');
+		} else {
+			$data['logo'] = '';
+		}
+
+		// Menu
+		$this->load->model('catalog/category');
+
+		$data['categories'] = array();
+
+		$categories = $this->model_catalog_category->getCategories(0);
+
+		foreach ($categories as $category) {
+			if ($category['top']) {
+
+				// Level 1
+				$data['categories'][] = array(
+					'name'     => $category['name'],
+					'column'   => $category['column'] ? $category['column'] : 1,
+					'href'     => $this->url->link('product/category', 'path=' . $category['category_id'])
+				);
+			}
+		}
+
 		$this->load->model('catalog/information');
 
 		$data['informations'] = array();
@@ -33,6 +67,7 @@ class ControllerCommonFooter extends Controller {
 			}
 		}
 
+		$data['home'] = $this->url->link('common/home');
 		$data['contact'] = $this->url->link('information/contact');
 		$data['return'] = $this->url->link('account/return/add', '', 'SSL');
 		$data['sitemap'] = $this->url->link('information/sitemap');
