@@ -1,5 +1,5 @@
 <div class="header-cart">
-  <div class="basket-btn"><i></i><span><?php echo $text_items; ?></span></div>
+  <div class="basket-btn"><i></i><?php echo $text_items; ?></div>
   <div class="drop-down basket">
     <?php if ($products || $vouchers) { ?>
     <?php foreach ($products as $product) { ?>

@@ -226,6 +226,15 @@ class ControllerCheckoutCart extends Controller {
 				);
 			}
 
+			switch (isset($this->session->data['language']) && $this->session->data['language']) {
+				case 'ru':
+					$number = $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0);
+					$data['text_items'] = sprintf($this->language->get('text_items'), $number, $this->cart->pluralForm($number, explode(',', $this->language->get('text_items_plural'))));
+					break;
+				default:
+					$data['text_items'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));
+			}
+
 			$data['continue'] = $this->url->link('common/home');
 
 			$data['checkout'] = $this->url->link('checkout/checkout', '', 'SSL');
@@ -385,7 +394,14 @@ class ControllerCheckoutCart extends Controller {
 					array_multisort($sort_order, SORT_ASC, $total_data);
 				}
 
-				$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));
+				switch (isset($this->session->data['language']) && $this->session->data['language']) {
+					case 'ru':
+						$number = $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0);
+						$json['total'] = sprintf($this->language->get('text_items'), $number, $this->cart->pluralForm($number, explode(',', $this->language->get('text_items_plural'))));
+						break;
+					default:
+						$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));
+				}
 			} else {
 				$json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
 			}
@@ -474,7 +490,14 @@ class ControllerCheckoutCart extends Controller {
 				array_multisort($sort_order, SORT_ASC, $total_data);
 			}
 
-			$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));
+			switch (isset($this->session->data['language']) && $this->session->data['language']) {
+				case 'ru':
+					$number = $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0);
+					$json['total'] = sprintf($this->language->get('text_items'), $number, $this->cart->pluralForm($number, explode(',', $this->language->get('text_items_plural'))));
+					break;
+				default:
+					$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));
+			}
 		}
 
 		$this->response->addHeader('Content-Type: application/json');
