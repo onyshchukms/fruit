@@ -305,6 +305,20 @@
                   </select>
                 </div>
               </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-quantity-class"><?php echo $entry_quantity_class; ?></label>
+                <div class="col-sm-10">
+                  <select name="config_quantity_class_id" id="input-quantity-class" class="form-control">
+                    <?php foreach ($quantity_classes as $quantity_class) { ?>
+                    <?php if ($quantity_class['quantity_class_id'] == $config_quantity_class_id) { ?>
+                    <option value="<?php echo $quantity_class['quantity_class_id']; ?>" selected="selected"><?php echo $quantity_class['title']; ?></option>
+                    <?php } else { ?>
+                    <option value="<?php echo $quantity_class['quantity_class_id']; ?>"><?php echo $quantity_class['title']; ?></option>
+                    <?php } ?>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
             </div>
             <div class="tab-pane" id="tab-option">
               <fieldset>

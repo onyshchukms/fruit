@@ -76,6 +76,7 @@ class ControllerSettingSetting extends Controller {
 		$data['entry_currency_auto'] = $this->language->get('entry_currency_auto');
 		$data['entry_length_class'] = $this->language->get('entry_length_class');
 		$data['entry_weight_class'] = $this->language->get('entry_weight_class');
+		$data['entry_quantity_class'] = $this->language->get('entry_quantity_class');
 		$data['entry_product_limit'] = $this->language->get('entry_product_limit');
 		$data['entry_product_description_length'] = $this->language->get('entry_product_description_length');
 		$data['entry_limit_admin'] = $this->language->get('entry_limit_admin');
@@ -665,6 +666,16 @@ class ControllerSettingSetting extends Controller {
 		$this->load->model('localisation/weight_class');
 
 		$data['weight_classes'] = $this->model_localisation_weight_class->getWeightClasses();
+
+		if (isset($this->request->post['config_quantity_class_id'])) {
+			$data['config_quantity_class_id'] = $this->request->post['config_quantity_class_id'];
+		} else {
+			$data['config_quantity_class_id'] = $this->config->get('config_quantity_class_id');
+		}
+
+		$this->load->model('localisation/quantity_class');
+
+		$data['quantity_classes'] = $this->model_localisation_quantity_class->getQuantityClasses();
 
 		if (isset($this->request->post['config_product_limit'])) {
 			$data['config_product_limit'] = $this->request->post['config_product_limit'];

@@ -338,6 +338,7 @@ class ControllerCatalogProduct extends Controller {
 		);
 
 		$this->load->model('tool/image');
+		$this->load->model('localisation/quantity_class');
 
 		$product_total = $this->model_catalog_product->getTotalProducts($filter_data);
 
@@ -370,6 +371,7 @@ class ControllerCatalogProduct extends Controller {
 				'price'      => $result['price'],
 				'special'    => $special,
 				'quantity'   => $result['quantity'],
+				'quantity_unit' => $this->quantity->getUnit($result['quantity_class_id']),
 				'status'     => ($result['status']) ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
 				'edit'       => $this->url->link('catalog/product/edit', 'token=' . $this->session->data['token'] . '&product_id=' . $result['product_id'] . $url, 'SSL')
 			);
@@ -893,6 +895,18 @@ class ControllerCatalogProduct extends Controller {
 			$data['quantity'] = $product_info['quantity'];
 		} else {
 			$data['quantity'] = 1;
+		}
+
+		$this->load->model('localisation/quantity_class');
+
+		$data['quantity_classes'] = $this->model_localisation_quantity_class->getQuantityClasses();
+
+		if (isset($this->request->post['quantity_class_id'])) {
+			$data['quantity_class_id'] = $this->request->post['quantity_class_id'];
+		} elseif (!empty($product_info)) {
+			$data['quantity_class_id'] = $product_info['quantity_class_id'];
+		} else {
+			$data['quantity_class_id'] = $this->config->get('config_quantity_class_id');
 		}
 
 		if (isset($this->request->post['minimum'])) {

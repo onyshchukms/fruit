@@ -177,7 +177,22 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-quantity"><?php echo $entry_quantity; ?></label>
                 <div class="col-sm-10">
-                  <input type="text" name="quantity" value="<?php echo $quantity; ?>" placeholder="<?php echo $entry_quantity; ?>" id="input-quantity" class="form-control" />
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <input type="text" name="quantity" value="<?php echo $quantity; ?>" placeholder="<?php echo $entry_quantity; ?>" id="input-quantity" class="form-control" />
+                    </div>
+                    <div class="col-sm-2">
+                      <select name="quantity_class_id" id="input-quantity-class" class="form-control">
+                        <?php foreach ($quantity_classes as $quantity_class) { ?>
+                          <?php if ($quantity_class['quantity_class_id'] == $quantity_class_id) { ?>
+                            <option value="<?php echo $quantity_class['quantity_class_id']; ?>" selected="selected"><?php echo $quantity_class['title']; ?></option>
+                          <?php } else { ?>
+                            <option value="<?php echo $quantity_class['quantity_class_id']; ?>"><?php echo $quantity_class['title']; ?></option>
+                          <?php } ?>
+                        <?php } ?>
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="form-group">

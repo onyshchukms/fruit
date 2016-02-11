@@ -153,6 +153,7 @@
           </li>
           <li><a href="<?php echo $length_class; ?>"><?php echo $text_length_class; ?></a></li>
           <li><a href="<?php echo $weight_class; ?>"><?php echo $text_weight_class; ?></a></li>
+          <li><a href="<?php echo $quantity_class; ?>"><?php echo $text_quantity_class; ?></a></li>
         </ul>
       </li>
       <li><a class="parent"><?php echo $text_tools; ?></a>

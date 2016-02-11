@@ -54,6 +54,7 @@ $_['entry_currency']                   = 'Валюта';
 $_['entry_currency_auto']              = 'Автоматическое обновление валют';
 $_['entry_length_class']               = 'Единица измерения';
 $_['entry_weight_class']               = 'Вес';
+$_['entry_quantity_class']             = 'Количество';
 $_['entry_product_limit']              = 'Лимит товаров (Витрина)';
 $_['entry_product_description_length'] = 'Количество символов (Витрина)';
 $_['entry_limit_admin']                = 'Лимит элементов (Admin)';

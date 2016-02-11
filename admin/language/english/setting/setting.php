@@ -54,6 +54,7 @@ $_['entry_currency']                   = 'Currency';
 $_['entry_currency_auto']              = 'Auto Update Currency';
 $_['entry_length_class']               = 'Length Class';
 $_['entry_weight_class']               = 'Weight Class';
+$_['entry_quantity_class']             = 'Quantity Class';
 $_['entry_product_limit']              = 'Default Items Per Page (Catalog)';
 $_['entry_product_description_length'] = 'List Description Limit (Catalog)';
 $_['entry_limit_admin']                = 'Default Items Per Page (Admin)';

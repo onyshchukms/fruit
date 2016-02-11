@@ -135,6 +135,9 @@ $registry->set('weight', new Weight($registry));
 // Length
 $registry->set('length', new Length($registry));
 
+// Quantity
+$registry->set('quantity', new Quantity($registry));
+
 // User
 $registry->set('user', new User($registry));
 
