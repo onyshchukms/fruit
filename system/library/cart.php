@@ -357,15 +357,7 @@ class Cart {
 	}
 
 	public function countProducts() {
-		$product_total = 0;
-
-		$products = $this->getProducts();
-
-		foreach ($products as $product) {
-			$product_total += $product['quantity'];
-		}
-
-		return $product_total;
+		return count($this->getProducts());
 	}
 
 	public function hasProducts() {
